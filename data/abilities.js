@@ -370,17 +370,30 @@ let BattleAbilities = {
 		rating: 3,
 		num: 171,
 	},
-	"cheekpouch": {
-		desc: "If this Pokemon eats a Berry, it restores 1/3 of its maximum HP, rounded down, in addition to the Berry's effect.",
-		shortDesc: "If this Pokemon eats a Berry, it restores 1/3 of its max HP after the Berry's effect.",
-		onEatItem(item, pokemon) {
-			this.heal(pokemon.baseMaxhp / 3);
-		},
-		id: "cheekpouch",
-		name: "Cheek Pouch",
-		rating: 1.5,
-		num: 167,
-	},
+	"incendiary": {
+		name: "Incendiary",
+		 desc: "This Pokemon's Normal-type moves become Fire-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		 shortDesc: "This Pokemon's Normal-type moves become Fire type and have 1.2x power.",
+		 onModifyMovePriority: -1,
+		 onModifyMove(move, pokemon) {
+				 if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+						 move.type = 'Fire';
+						 move.calcinateBoosted = true;
+				 }
+		 },
+ },
+				 "tectonic": {
+					 name: "Tectonic",
+						 desc: "This Pokemon's Normal-type moves become Ground-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+						 shortDesc: "This Pokemon's Normal-type moves become Ground type and have 1.2x power.",
+						 onModifyMovePriority: -1,
+						 onModifyMove(move, pokemon) {
+								 if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+										 move.type = 'Ground';
+										 move.tectonicBoosted = true;
+								 }
+						 },
+				 },
 	"chlorophyll": {
 		desc: "If Sunny Day is active and this Pokemon is not holding Utility Umbrella, this Pokemon's Speed is doubled.",
 		shortDesc: "If Sunny Day is active, this Pokemon's Speed is doubled.",
@@ -918,6 +931,7 @@ let BattleAbilities = {
 		rating: 1,
 		num: 194,
 	},
+
 	"fairyaura": {
 		desc: "While this Pokemon is active, the power of Fairy-type moves used by active Pokemon is multiplied by 1.33.",
 		shortDesc: "While this Pokemon is active, a Fairy move used by any Pokemon has 1.33x power.",
@@ -1698,6 +1712,18 @@ let BattleAbilities = {
 		rating: 5,
 		num: 150,
 	},
+	"infectate": {
+		name: "Infectate",
+			desc: "This Pokemon's Normal-type moves become Bug-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+			shortDesc: "This Pokemon's Normal-type moves become Bug type and have 1.2x power.",
+			onModifyMovePriority: -1,
+			onModifyMove(move, pokemon) {
+					if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+							move.type = 'Bug';
+							move.infectateBoosted = true;
+					}
+			},
+	},
 	"infiltrator": {
 		desc: "This Pokemon's moves ignore substitutes and the opposing side's Reflect, Light Screen, Safeguard, Mist and Aurora Veil.",
 		shortDesc: "Moves ignore substitutes and foe's Reflect/Light Screen/Safeguard/Mist/Aurora Veil.",
@@ -1983,6 +2009,18 @@ let BattleAbilities = {
 		name: "Liquid Voice",
 		rating: 1.5,
 		num: 204,
+	},
+	"liquidate": {
+		name: "Liquidate",
+			desc: "This Pokemon's Normal-type moves become Water-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+			shortDesc: "This Pokemon's Normal-type moves become Water type and have 1.2x power.",
+			onModifyMovePriority: -1,
+			onModifyMove(move, pokemon) {
+					if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+							move.type = 'Water';
+							move.liquidateBoosted = true;
+					}
+			},
 	},
 	"longreach": {
 		shortDesc: "This Pokemon's attacks do not make contact with the target.",
@@ -2833,7 +2871,7 @@ let BattleAbilities = {
 			pokemon.formeChange('Zygarde-Complete', this.effect, true);
 			let newHP = Math.floor(Math.floor(2 * pokemon.template.baseStats['hp'] + pokemon.set.ivs['hp'] + Math.floor(pokemon.set.evs['hp'] / 4) + 100) * pokemon.level / 100 + 10);
 			pokemon.hp = newHP - (pokemon.maxhp - pokemon.hp);
-			pokemon.maxhp = pokemon.baseMaxhp = newHP;
+			pokemon.maxhp = newHP;
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 		},
 		id: "powerconstruct",
@@ -4454,25 +4492,48 @@ let BattleAbilities = {
 				return null;
 			}
 		},
+
 		id: "voltabsorb",
 		name: "Volt Absorb",
 		rating: 3.5,
 		num: 10,
 	},
+	"villanize": {
+		name: "Villanize",
+		 desc: "This Pokemon's Normal-type moves become Dark-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		 shortDesc: "This Pokemon's Normal-type moves become Dark type and have 1.2x power.",
+		 onModifyMovePriority: -1,
+		 onModifyMove(move, pokemon) {
+				 if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+						 move.type = 'Dark';
+						 move.villanizeBoosted = true;
+				 }
+		 },
+	},
 	"wanderingspirit": {
 		desc: "The Pokémon exchanges Abilities with a Pokémon that hits it with a move that makes direct contact.",
-		shortDesc: "Exchanges abilities when hit with a contact move.",
-		onAfterDamage(damage, target, source, effect) {
-			if (!source || source.ability === 'wanderingspirit' || target.volatiles['dynamax']) return;
-			if (effect && effect.effectType === 'Move' && effect.flags['contact']) {
-				let sourceAbility = source.setAbility('wanderingspirit', target);
-				if (!sourceAbility) return;
+		shortDesc: "Exchanges abilities when hitting a Pokémon with a contact move.",
+		onAfterDamage(damage, target, source, move) {
+			// Are these actually banned? Makes sense for them to be banned to me
+			let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'gulpmissile', 'hungerswitch', 'iceface', 'illusion', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'wonderguard', 'zenmode'];
+			if (source && source !== target && move && move.flags['contact'] && !bannedAbilities.includes(source.ability)) {
+				let targetAbility = this.dex.getAbility(target.ability);
+				let sourceAbility = this.dex.getAbility(source.ability);
 				if (target.side === source.side) {
-					this.add('-activate', target, 'Skill Swap', '', '', '[of] ' + source);
+					this.add('-activate', source, 'ability: Wandering Spirit', '', '', '[of] ' + target);
 				} else {
-					this.add('-activate', target, 'ability: Wandering Spirit', this.dex.getAbility(sourceAbility).name, 'Wandering Spirit', '[of] ' + source);
+					this.add('-activate', source, 'ability: Wandering Spirit', targetAbility, sourceAbility, '[of] ' + target);
 				}
-				target.setAbility(sourceAbility);
+				this.singleEvent('End', sourceAbility, source.abilityData, source);
+				this.singleEvent('End', targetAbility, target.abilityData, target);
+				if (targetAbility.id !== sourceAbility.id) {
+					source.ability = targetAbility.id;
+					target.ability = sourceAbility.id;
+					source.abilityData = {id: toID(source.ability), target: source};
+					target.abilityData = {id: toID(target.ability), target: target};
+				}
+				this.singleEvent('Start', targetAbility, source.abilityData, source);
+				this.singleEvent('Start', sourceAbility, target.abilityData, target);
 			}
 		},
 		id: "wanderingspirit",

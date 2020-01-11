@@ -1738,15 +1738,13 @@ let BattleItems = {
 		},
 		onModifyDefPriority: 2,
 		onModifyDef(def, pokemon) {
-			// Temporary hardcode for Slowpoke-Galar since it's a special case
-			if (pokemon.baseTemplate.nfe || pokemon.baseTemplate.species === 'Slowpoke-Galar') {
+			if (pokemon.baseTemplate.nfe) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpDPriority: 2,
 		onModifySpD(spd, pokemon) {
-			// Temporary hardcode for Slowpoke-Galar since it's a special case
-			if (pokemon.baseTemplate.nfe || pokemon.baseTemplate.species === 'Slowpoke-Galar') {
+			if (pokemon.baseTemplate.nfe) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -6985,7 +6983,1015 @@ let BattleItems = {
 		isNonstandard: "Past",
 		desc: "(Gen 2) Holder is cured if it is poisoned. Single use.",
 	},
-
+  //  RHA Items
+	"fearowsite": {
+		id: "fearowsite",
+		name: "Fearowsite",
+		spritenum: 609,
+		megaStone: "Fearow-Mega",
+		megaEvolves: "Fearow",
+		itemUser: ["Fearow"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -116,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by a Fearow, this item allows it to Mega Evolve in battle.",
+	},
+	"vileplumite": {
+		id: "vileplumite",
+		name: "Vileplumite",
+		spritenum: 610,
+		megaStone: "Vileplume-Mega",
+		megaEvolves: "Vileplume",
+		itemUser: ["Vileplume"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -115,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Vileplume, this item allows it to Mega Evolve in battle.",
+	},
+	"golduckite": {
+		id: "golduckite",
+		name: "Golduckite",
+		spritenum: 611,
+		megaStone: "Golduck-Mega",
+		megaEvolves: "Golduck",
+		itemUser: ["Golduck"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -114,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Golduck, this item allows it to Mega Evolve in battle.",
+	},
+	"dewgonite": {
+		id: "dewgonite",
+		name: "Dewgonite",
+		spritenum: 612,
+		megaStone: "Dewgong-Mega",
+		megaEvolves: "Dewgong",
+		itemUser: ["Dewgong"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -114,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Dewgong, this item allows it to Mega Evolve in battle.",
+	},
+	"seakinite": {
+		id: "seakinite",
+		name: "Seakinite",
+		spritenum: 613,
+		megaStone: "Seaking-Mega",
+		megaEvolves: "Seaking",
+		itemUser: ["Seaking"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -113,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Seaking, this item allows it to Mega Evolve in battle.",
+	},
+	"meganiunite": {
+		id: "meganiunite",
+		name: "Meganiunite",
+		spritenum: 614,
+		megaStone: "Meganium-Mega",
+		megaEvolves: "Meganium",
+		itemUser: ["Meganium"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -112,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Meganium, this item allows it to Mega Evolve in battle.",
+	},
+	"typhlosionite": {
+		id: "typhlosionite",
+		name: "Typhlosionite",
+		spritenum: 615,
+		megaStone: "Typhlosion-Mega",
+		megaEvolves: "Typhlosion",
+		itemUser: ["Typhlosion"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -111,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Typhlosion, this item allows it to Mega Evolve in battle.",
+	},
+	"feraligatrite": {
+		id: "feraligatrite",
+		name: "Feraligatrite",
+		spritenum: 616,
+		megaStone: "Feraligatr-Mega",
+		megaEvolves: "Feraligatr",
+		itemUser: ["Feraligatr"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -110,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Feraligatr, this item allows it to Mega Evolve in battle.",
+	},
+	"noctowlite": {
+		id: "noctowlite",
+		name: "Noctowlite",
+		spritenum: 617,
+		megaStone: "Noctowl-Mega",
+		megaEvolves: "Noctowl",
+		itemUser: ["Noctowl"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -109,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Noctowl, this item allows it to Mega Evolve in battle.",
+	},
+	"ariadosite": {
+		id: "ariadosite",
+		name: "Ariadosite",
+		spritenum: 618,
+		megaStone: "Ariados-Mega",
+		megaEvolves: "Ariados",
+		itemUser: ["Ariados"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -108,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Ariados, this item allows it to Mega Evolve in battle.",
+	},
+	"xatunite": {
+		id: "xatunite",
+		name: "Xatunite",
+		spritenum: 619,
+		megaStone: "Xatu-Mega",
+		megaEvolves: "Xatu",
+		itemUser: ["Xatu"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -107,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Xatu, this item allows it to Mega Evolve in battle.",
+	},
+	"girafarigite": {
+		id: "girafarigite",
+		name: "Girafarigite",
+		spritenum: 620,
+		megaStone: "Gigafarig-Mega",
+		megaEvolves: "Girafarig",
+		itemUser: ["Girafarig"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -106,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Girafarig, this item allows it to Mega Evolve in battle.",
+	},
+	"ursaringite": {
+		id: "ursaringite",
+		name: "Ursaringite",
+		spritenum: 621,
+		megaStone: "Ursaring-Mega",
+		megaEvolves: "Ursaring",
+		itemUser: ["Ursaring"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -105,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Ursaring, this item allows it to Mega Evolve in battle.",
+	},
+	"skarmorite": {
+		id: "skarmorite",
+		name: "Skarmorite",
+		spritenum: 622,
+		megaStone: "Skarmory-Mega",
+		megaEvolves: "Skarmory",
+		itemUser: ["Skarmory"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -104,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Skarmory, this item allows it to Mega Evolve in battle.",
+	},
+	"masquerainite": {
+		id: "masquerainite",
+		name: "Masquerainite",
+		spritenum: 623,
+		megaStone: "Masquerain-Mega",
+		megaEvolves: "Masquerain",
+		itemUser: ["Masquerain"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -103,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Masquerain, this item allows it to Mega Evolve in battle.",
+	},
+	"flygonite": {
+		id: "flygonite",
+		name: "Flygonite",
+		spritenum: 624,
+		megaStone: "Flygon-Mega",
+		megaEvolves: "Flygon",
+		itemUser: ["Flygon"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -102,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Flygon, this item allows it to Mega Evolve in battle.",
+	},
+	"zangoosite": {
+		id: "zangoosite",
+		name: "Zangoosite",
+		spritenum: 625,
+		megaStone: "Zangoose-Mega",
+		megaEvolves: "Zangoose",
+		itemUser: ["Zangoose"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -101,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Zangoose, this item allows it to Mega Evolve in battle.",
+	},
+	"seviperite": {
+		id: "seviperite",
+		name: "Seviperite",
+		spritenum: 626,
+		megaStone: "Seviper-Mega",
+		megaEvolves: "Seviper",
+		itemUser: ["Seviper"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -100,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Seviper, this item allows it to Mega Evolve in battle.",
+	},
+	"torterrite": {
+		id: "torterrite",
+		name: "Torterrite",
+		spritenum: 627,
+		megaStone: "Torterra-Mega",
+		megaEvolves: "Torterra",
+		itemUser: ["Torterra"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -99,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Torterra, this item allows it to Mega Evolve in battle.",
+	},
+	"infernapite": {
+		id: "infernapite",
+		name: "Infernapite",
+		spritenum: 628,
+		megaStone: "Infernape-Mega",
+		megaEvolves: "Infernape",
+		itemUser: ["Infernape"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -98,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Infernape, this item allows it to Mega Evolve in battle.",
+	},
+	"empoleonite": {
+		id: "empoleonite",
+		name: "Empoleonite",
+		spritenum: 629,
+		megaStone: "Empoleon-Mega",
+		megaEvolves: "Empoleon",
+		itemUser: ["Empoleon"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -97,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Empoleon, this item allows it to Mega Evolve in battle.",
+	},
+	"staraptorite": {
+		id: "staraptorite",
+		name: "Staraptorite",
+		spritenum: 630,
+		megaStone: "Staraptor-Mega",
+		megaEvolves: "Staraptor",
+		itemUser: ["Staraptor"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -96,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Staraptor, this item allows it to Mega Evolve in battle.",
+	},
+	"luxrite": {
+		id: "luxrite",
+		name: "Luxrite",
+		spritenum: 631,
+		megaStone: "Luxray-Mega",
+		megaEvolves: "Luxray",
+		itemUser: ["Luxray"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -95,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Luxray, this item allows it to Mega Evolve in battle.",
+	},
+	"vespiquenite": {
+		id: "vespiquenite",
+		name: "Vileplumite",
+		spritenum: 632,
+		megaStone: "Vespiquen-Mega",
+		megaEvolves: "Vespiquen",
+		itemUser: ["Vespiquen"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -94,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Vespiquen, this item allows it to Mega Evolve in battle.",
+	},
+	"cherrimite": {
+		id: "cherrimite",
+		name: "Cherrimite",
+		spritenum: 633,
+		megaStone: "Cherrim-Mega",
+		megaEvolves: "Cherrim",
+		itemUser: ["Cherrim"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -93,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Cherrim, this item allows it to Mega Evolve in battle.",
+	},
+	"mismagiusite": {
+		id: "mismagiusite",
+		name: "Mismagiusite",
+		spritenum: 634,
+		megaStone: "Mismagius-Mega",
+		megaEvolves: "Mismagius",
+		itemUser: ["Mismagius"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -92,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Mismagius, this item allows it to Mega Evolve in battle.",
+	},
+	"bronzongite": {
+		id: "bronzongite",
+		name: "Bronzongite",
+		spritenum: 635,
+		megaStone: "Bronzong-Mega",
+		megaEvolves: "Bronzong",
+		itemUser: ["Bronzong"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -91,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Bronzong, this item allows it to Mega Evolve in battle.",
+	},
+	"drapionite": {
+		id: "drapionite",
+		name: "Drapionite",
+		spritenum: 636,
+		megaStone: "Drapion-Mega",
+		megaEvolves: "Drapion",
+		itemUser: ["Drapion"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -90,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Drapion, this item allows it to Mega Evolve in battle.",
+	},
+	"lumineonite": {
+		id: "lumineonite",
+		name: "Lumineonite",
+		spritenum: 637,
+		megaStone: "Lumineon-Mega",
+		megaEvolves: "Lumineon",
+		itemUser: ["Lumineon"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -89,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Lumineon, this item allows it to Mega Evolve in battle.",
+	},
+	"serperiorite": {
+		id: "serperiorite",
+		name: "Serperiorite",
+		spritenum: 638,
+		megaStone: "Serperior-Mega",
+		megaEvolves: "Serperior",
+		itemUser: ["Serperior"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -88,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Serperior, this item allows it to Mega Evolve in battle.",
+	},
+	"emboarite": {
+		id: "emboarite",
+		name: "Emboarite",
+		spritenum: 639,
+		megaStone: "Emboar-Mega",
+		megaEvolves: "Emboar",
+		itemUser: ["Emboar"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -87,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Emboar, this item allows it to Mega Evolve in battle.",
+	},
+	"samurottite": {
+		id: "smaurottite",
+		name: "Samurottite",
+		spritenum: 640,
+		megaStone: "Samurott-Mega",
+		megaEvolves: "Samurott",
+		itemUser: ["Samurott"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -86,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Samurott, this item allows it to Mega Evolve in battle.",
+	},
+	"sawsbuckite": {
+		id: "sawsbuckite",
+		name: "Sawsbuckite",
+		spritenum: 641,
+		megaStone: "Sawsbuck-Mega",
+		megaEvolves: "Sawsbuck",
+		itemUser: ["Sawsbuck"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -85,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Sawsbuck, this item allows it to Mega Evolve in battle.",
+	},
+	"eelektrossite": {
+		id: "eelektrossite",
+		name: "Eelektrossite",
+		spritenum: 642,
+		megaStone: "Eelektross-Mega",
+		megaEvolves: "Eelektross",
+		itemUser: ["Eelektross"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -84,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Eelektross, this item allows it to Mega Evolve in battle.",
+	},
+	"beheeyemite": {
+		id: "beheeyemite",
+		name: "Beheeyemite",
+		spritenum: 643,
+		megaStone: "Beheeyem-Mega",
+		megaEvolves: "Beheeyem",
+		itemUser: ["Beheeyem"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -83,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Beheeyem, this item allows it to Mega Evolve in battle.",
+	},
+	"chandelurite": {
+		id: "chandelurite",
+		name: "Chandelurite",
+		spritenum: 644,
+		megaStone: "Chandelure-Mega",
+		megaEvolves: "Chandelure",
+		itemUser: ["Chandelure"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -82,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Chandelure, this item allows it to Mega Evolve in battle.",
+	},
+	"chesnaughtite": {
+		id: "chesnaughtite",
+		name: "Chesnaughtite",
+		spritenum: 645,
+		megaStone: "Chesnaught-Mega",
+		megaEvolves: "Chesnaught",
+		itemUser: ["Chesnaught"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -81,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Chesnaught, this item allows it to Mega Evolve in battle.",
+	},
+	"delphoxite": {
+		id: "delphoxite",
+		name: "Delphoxite",
+		spritenum: 646,
+		megaStone: "Delphox-Mega",
+		megaEvolves: "Delphox",
+		itemUser: ["Delphox"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -80,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Delphox, this item allows it to Mega Evolve in battle.",
+	},
+	"greninite": {
+		id: "greninite",
+		name: "Greninite",
+		spritenum: 647,
+		megaStone: "Greninja-Mega",
+		megaEvolves: "Greninja",
+		itemUser: ["Greninja"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -79,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Greninja, this item allows it to Mega Evolve in battle.",
+	},
+	"florgesite": {
+		id: "florgesite",
+		name: "Florgesite",
+		spritenum: 648,
+		megaStone: "Florges-Mega",
+		megaEvolves: "Florges",
+		itemUser: ["Florges"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -78,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Florges, this item allows it to Mega Evolve in battle.",
+	},
+	"dragalgite": {
+		id: "dragalgite",
+		name: "Dragalgite",
+		spritenum: 649,
+		megaStone: "Dragalge-Mega",
+		megaEvolves: "Dragalge",
+		itemUser: ["Dragalge"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -76,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Dragalge, this item allows it to Mega Evolve in battle.",
+	},
+	"clawitzite": {
+		id: "clawitzite",
+		name: "Clawitzite",
+		spritenum: 650,
+		megaStone: "Clawitzer-Mega",
+		megaEvolves: "Clawitzer",
+		itemUser: ["Clawitzer"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -75,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Clawitzer, this item allows it to Mega Evolve in battle.",
+	},
+	"helioliskite": {
+		id: "helioliskite",
+		name: "Helioliskite",
+		spritenum: 651,
+		megaStone: "Heliolisk-Mega",
+		megaEvolves: "Heliolisk",
+		itemUser: ["Heliolisk"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -74,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Heliolisk, this item allows it to Mega Evolve in battle.",
+	},
+	"decidueyite": {
+		id: "decidueyite",
+		name: "Decidueyite",
+		spritenum: 652,
+		megaStone: "Decidueye-Mega",
+		megaEvolves: "Decidueye",
+		itemUser: ["Decidueye"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -73,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Decidueye, this item allows it to Mega Evolve in battle.",
+	},
+	"incineroarite": {
+		id: "incineroarite",
+		name: "Incineroarite",
+		spritenum: 653,
+		megaStone: "Incineroar-Mega",
+		megaEvolves: "Incineroar",
+		itemUser: ["Incineroar"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -72,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Incineroar, this item allows it to Mega Evolve in battle.",
+	},
+	"primarinite": {
+		id: "primarinite",
+		name: "Primarinite",
+		spritenum: 654,
+		megaStone: "Primarina-Mega",
+		megaEvolves: "Primarina",
+		itemUser: ["Primarina"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -71,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Primarina, this item allows it to Mega Evolve in battle.",
+	},
+	"crabominablenite": {
+		id: "crabominablenite",
+		name: "Crabominablenite",
+		spritenum: 655,
+		megaStone: "Crabominable-Mega",
+		megaEvolves: "Crabominable",
+		itemUser: ["Crabominable"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -70,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Crabominable, this item allows it to Mega Evolve in battle.",
+	},
+	"mudsdalite": {
+		id: "mudsdalite",
+		name: "Mudsdalite",
+		spritenum: 656,
+		megaStone: "Mudsdale-Mega",
+		megaEvolves: "Mudsdale",
+		itemUser: ["Mudsdale"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -69,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Mudsdale, this item allows it to Mega Evolve in battle.",
+	},
+	"tsareenite": {
+		id: "tsareenite",
+		name: "Tsareenite",
+		spritenum: 657,
+		megaStone: "Tsareena-Mega",
+		megaEvolves: "Tsareena",
+		itemUser: ["Tsareena"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -68,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Tsareena, this item allows it to Mega Evolve in battle.",
+	},
+	"golisopodite": {
+		id: "golisopodite",
+		name: "Golisopodite",
+		spritenum: 658,
+		megaStone: "Golisopod-Mega",
+		megaEvolves: "Golisopod",
+		itemUser: ["Golisopod"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -67,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Golisopod, this item allows it to Mega Evolve in battle.",
+	},
+	"palossandite": {
+		id: "palossandite",
+		name: "Palossandite",
+		spritenum: 659,
+		megaStone: "Palossand-Mega",
+		megaEvolves: "Palossand",
+		itemUser: ["Palossand"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -66,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Palossand, this item allows it to Mega Evolve in battle.",
+	},
+	"rillaboomite": {
+		id: "rillaboomite",
+		name: "Rillaboomite",
+		spritenum: 660,
+		megaStone: "Rillaboom-Mega",
+		megaEvolves: "Rillaboom",
+		itemUser: ["Rillaboom"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -65,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Rillaboom, this item allows it to Mega Evolve in battle.",
+	},
+	"cinderacite": {
+		id: "cinderacite",
+		name: "Cinderacite",
+		spritenum: 661,
+		megaStone: "Cinderace-Mega",
+		megaEvolves: "Cinderace",
+		itemUser: ["Cinderace"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -64,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Cinderace, this item allows it to Mega Evolve in battle.",
+	},
+	"inteleonite": {
+		id: "inteleonite",
+		name: "Inteleonite",
+		spritenum: 662,
+		megaStone: "Inteleon-Mega",
+		megaEvolves: "Inteleon",
+		itemUser: ["Inteleon"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -63,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Inteleon, this item allows it to Mega Evolve in battle.",
+	},
+	"orbeetite": {
+		id: "orbeetite",
+		name: "Orbeetite",
+		spritenum: 663,
+		megaStone: "Orbeetle-Mega",
+		megaEvolves: "Orbeetle",
+		itemUser: ["Orbeetlee"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -62,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Orbeetle, this item allows it to Mega Evolve in battle.",
+	},
+	"drednawite": {
+		id: "drednawite",
+		name: "Drednawite",
+		spritenum: 664,
+		megaStone: "Drednaw-Mega",
+		megaEvolves: "Drednaw",
+		itemUser: ["Drednaw"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -61,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Drednaw, this item allows it to Mega Evolve in battle.",
+	},
+	"coalossite": {
+		id: "coalossite",
+		name: "Coalossite",
+		spritenum: 665,
+		megaStone: "Coalossal-Mega",
+		megaEvolves: "Coalossal",
+		itemUser: ["Coalossal"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -60,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Coalossal, this item allows it to Mega Evolve in battle.",
+	},
+	"flappite": {
+		id: "flappite",
+		name: "Flappite",
+		spritenum: 666,
+		megaStone: "Flapple-Mega",
+		megaEvolves: "Flapple",
+		itemUser: ["Flapple"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -59,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Flapple, this item allows it to Mega Evolve in battle.",
+	},
+	"appletunite": {
+		id: "appletunite",
+		name: "Appletunite",
+		spritenum: 667,
+		megaStone: "Appletun-Mega",
+		megaEvolves: "Appletun",
+		itemUser: ["Appletun"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -58,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Appletun, this item allows it to Mega Evolve in battle.",
+	},
+	"toxtricitite": {
+		id: "toxtricitite",
+		name: "Toxtricitite",
+		spritenum: 668,
+		megaStone: "Toxtricity-Mega",
+		megaEvolves: "Toxtricity",
+		itemUser: ["Toxtricity"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -57,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Toxtricity, this item allows it to Mega Evolve in battle.",
+	},
+	"centiskorchite": {
+		id: "centiskorchite",
+		name: "Centiskorchite",
+		spritenum: 669,
+		megaStone: "Centiskorch-Mega",
+		megaEvolves: "Centiskorch",
+		itemUser: ["Centiskorch"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -56,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Centiskorch, this item allows it to Mega Evolve in battle.",
+	},
+	"octillite": {
+		id: "octillite",
+		name: "Octillite",
+		spritenum: 670,
+		megaStone: "Octillery-Mega",
+		megaEvolves: "Octillery",
+		itemUser: ["Octillery"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -55,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Octillery, this item allows it to Mega Evolve in battle.",
+	},
+	"breloomite": {
+		id: "breloomite",
+		name: "Breloomite",
+		spritenum: 671,
+		megaStone: "Breloom-Mega",
+		megaEvolves: "Breloom",
+		itemUser: ["Breloom"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -54,
+		gen: 6,
+		isNonstandard: "RHA",
+		desc: "If held by an Breloom, this item allows it to Mega Evolve in battle.",
+	},
 	// CAP items
 
 	"crucibellite": {
