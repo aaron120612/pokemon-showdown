@@ -371,29 +371,43 @@ let BattleAbilities = {
 		num: 171,
 	},
 	"incendiary": {
+		desc: "This Pokemon's Normal-type moves become Fire-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		shortDesc: "This Pokemon's Normal-type moves become Fire type and have 1.2x power.",
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Fire';
+				move.incendiaryBoosted = true;
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.incendiaryBoosted) return this.chainModify([0x1333, 0x1000]);
+		},
+		id: "incendiary",
 		name: "Incendiary",
-		 desc: "This Pokemon's Normal-type moves become Fire-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
-		 shortDesc: "This Pokemon's Normal-type moves become Fire type and have 1.2x power.",
-		 onModifyMovePriority: -1,
-		 onModifyMove(move, pokemon) {
-				 if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-						 move.type = 'Fire';
-						 move.calcinateBoosted = true;
-				 }
-		 },
+		rating: 4,
+		num: -100,
+	},
+	"tectonic": {
+	 desc: "This Pokemon's Normal-type moves become Ground-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+	 shortDesc: "This Pokemon's Normal-type moves become Ground type and have 1.2x power.",
+	 onModifyTypePriority: -1,
+	 onModifyType(move, pokemon) {
+		 if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+			 move.type = 'Ground';
+			 move.tectonicBoosted = true;
+		 }
+	 },
+	 onBasePowerPriority: 8,
+	 onBasePower(basePower, pokemon, target, move) {
+		 if (move.tectonicBoosted) return this.chainModify([0x1333, 0x1000]);
+	 },
+	 id: "tectonic",
+	 name: "Tectonic",
+	 rating: 4,
+	 num: -99,
  },
-				 "tectonic": {
-					 name: "Tectonic",
-						 desc: "This Pokemon's Normal-type moves become Ground-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
-						 shortDesc: "This Pokemon's Normal-type moves become Ground type and have 1.2x power.",
-						 onModifyMovePriority: -1,
-						 onModifyMove(move, pokemon) {
-								 if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-										 move.type = 'Ground';
-										 move.tectonicBoosted = true;
-								 }
-						 },
-				 },
 	"chlorophyll": {
 		desc: "If Sunny Day is active and this Pokemon is not holding Utility Umbrella, this Pokemon's Speed is doubled.",
 		shortDesc: "If Sunny Day is active, this Pokemon's Speed is doubled.",
@@ -1713,16 +1727,23 @@ let BattleAbilities = {
 		num: 150,
 	},
 	"infectate": {
+		desc: "This Pokemon's Normal-type moves become Bug-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		shortDesc: "This Pokemon's Normal-type moves become Bug type and have 1.2x power.",
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Bug';
+				move.infectateBoosted = true;
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.infectateBoosted) return this.chainModify([0x1333, 0x1000]);
+		},
+		id: "infectate",
 		name: "Infectate",
-			desc: "This Pokemon's Normal-type moves become Bug-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
-			shortDesc: "This Pokemon's Normal-type moves become Bug type and have 1.2x power.",
-			onModifyMovePriority: -1,
-			onModifyMove(move, pokemon) {
-					if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-							move.type = 'Bug';
-							move.infectateBoosted = true;
-					}
-			},
+		rating: 4,
+		num: -98,
 	},
 	"infiltrator": {
 		desc: "This Pokemon's moves ignore substitutes and the opposing side's Reflect, Light Screen, Safeguard, Mist and Aurora Veil.",
@@ -1800,6 +1821,31 @@ let BattleAbilities = {
 		name: "Intimidate",
 		rating: 3.5,
 		num: 22,
+	},
+	"horrify": {
+		desc: "On switch-in, this Pokemon lowers the Sp.Attack of adjacent opposing Pokemon by 1 stage. Inner Focus, Oblivious, Own Tempo, Scrappy, and Pokemon behind a substitute are immune.",
+		shortDesc: "On switch-in, this Pokemon lowers the Sp.Attack of adjacent opponents by 1 stage.",
+		onStart(pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Horrify', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target);
+				} else if (target.hasAbility(['Inner Focus', 'Oblivious', 'Own Tempo', 'Scrappy'])) {
+					this.add('-immune', target, `[from] ability: ${this.dex.getAbility(target.ability).name}`);
+				} else {
+					this.boost({spa: -1}, target, pokemon, null, true);
+				}
+			}
+		},
+		id: "horrify",
+		name: "Horrify",
+		rating: 3.5,
+		num: -94,
 	},
 	"intrepidsword": {
 		shortDesc: "On switch-in, this Pokemon's Attack is raised by 1 stage.",
@@ -2011,16 +2057,23 @@ let BattleAbilities = {
 		num: 204,
 	},
 	"liquidate": {
+		desc: "This Pokemon's Normal-type moves become Water-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		shortDesc: "This Pokemon's Normal-type moves become Water type and have 1.2x power.",
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Water';
+				move.liquidateBoosted = true;
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.liquidateBoosted) return this.chainModify([0x1333, 0x1000]);
+		},
+		id: "liquidate",
 		name: "Liquidate",
-			desc: "This Pokemon's Normal-type moves become Water-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
-			shortDesc: "This Pokemon's Normal-type moves become Water type and have 1.2x power.",
-			onModifyMovePriority: -1,
-			onModifyMove(move, pokemon) {
-					if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-							move.type = 'Water';
-							move.liquidateBoosted = true;
-					}
-			},
+		rating: 4,
+		num: -96,
 	},
 	"longreach": {
 		shortDesc: "This Pokemon's attacks do not make contact with the target.",
@@ -2162,6 +2215,20 @@ let BattleAbilities = {
 		name: "Mega Launcher",
 		rating: 3,
 		num: 178,
+	},
+	"heavyfirepower": {
+		desc: "This Pokemon's bullet moves have their power multiplied by 1.5.",
+		shortDesc: "This Pokemon's bullet moves have 1.5x power.",
+		onBasePowerPriority: 8,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['bullet']) {
+				return this.chainModify(1.5);
+			}
+		},
+		id: heavyfirepower",
+		name: "Heavy Firepower",
+		rating: 3,
+		num: -93,
 	},
 	"merciless": {
 		shortDesc: "This Pokemon's attacks are critical hits if the target is poisoned.",
@@ -4499,16 +4566,23 @@ let BattleAbilities = {
 		num: 10,
 	},
 	"villanize": {
+		desc: "This Pokemon's Normal-type moves become Dark-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		shortDesc: "This Pokemon's Normal-type moves become Dark type and have 1.2x power.",
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Dark';
+				move.villanizeBoosted = true;
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.villanizeBoosted) return this.chainModify([0x1333, 0x1000]);
+		},
+		id: "villanize",
 		name: "Villanize",
-		 desc: "This Pokemon's Normal-type moves become Dark-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
-		 shortDesc: "This Pokemon's Normal-type moves become Dark type and have 1.2x power.",
-		 onModifyMovePriority: -1,
-		 onModifyMove(move, pokemon) {
-				 if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-						 move.type = 'Dark';
-						 move.villanizeBoosted = true;
-				 }
-		 },
+		rating: 4,
+		num: -95,
 	},
 	"wanderingspirit": {
 		desc: "The Pokémon exchanges Abilities with a Pokémon that hits it with a move that makes direct contact.",

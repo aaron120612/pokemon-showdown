@@ -13,6 +13,16 @@ let Formats = [
 		section: "Sw/Sh Singles",
 	},
 	{
+		name: "[Gen 8] RHA Tier",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3656317/">Anything Goes</a>`,
+		],
+
+		mod: 'gen8',
+		searchShow: false,
+		ruleset: ['Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause'],
+	},
+	{
 		name: "[Gen 8] Random Battle",
 		desc: `Randomized teams of level-balanced Pok&eacute;mon with sets that are generated to be competitively viable.`,
 
