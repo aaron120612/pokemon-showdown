@@ -2225,7 +2225,7 @@ let BattleAbilities = {
 				return this.chainModify(1.5);
 			}
 		},
-		id: heavyfirepower",
+		id: "heavyfirepower",
 		name: "Heavy Firepower",
 		rating: 3,
 		num: -93,
