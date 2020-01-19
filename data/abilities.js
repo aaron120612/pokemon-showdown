@@ -3992,6 +3992,27 @@ let BattleAbilities = {
 		rating: 3.5,
 		num: 200,
 	},
+	"warriorsspirit": {
+		shortDesc: "This Pokemon's attacking stat is multiplied by 1.5 while using a Steel-type attack.",
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Steel') {
+				this.debug('Warriors Spirit boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Steel') {
+				this.debug('Warriors Spirit boost');
+				return this.chainModify(1.5);
+			}
+		},
+		id: "warriorspirit",
+		name: "Warrior's Spirit",
+		rating: 3.5,
+		num: 200,
+	},
 	"steelyspirit": {
 		shortDesc: "This Pokemon and its allies' Steel-type moves have their BP mutiplied by 1.5.",
 		onAllyBasePowerPriority: 8,

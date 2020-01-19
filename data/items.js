@@ -7128,13 +7128,13 @@ let BattleItems = {
 		isNonstandard: "RHA",
 		desc: "If held by an Noctowl, this item allows it to Mega Evolve in battle.",
 	},
-	"ariadosite": {
-		id: "ariadosite",
-		name: "Ariadosite",
+	"Stantlerite": {
+		id: "Stantlerite",
+		name: "Stantlerite",
 		spritenum: 618,
-		megaStone: "Ariados-Mega",
-		megaEvolves: "Ariados",
-		itemUser: ["Ariados"],
+		megaStone: "Stantler-Mega",
+		megaEvolves: "Stantler",
+		itemUser: ["Stantler"],
 		onTakeItem(item, source) {
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
 			return true;
@@ -7142,7 +7142,7 @@ let BattleItems = {
 		num: -108,
 		gen: 6,
 		isNonstandard: "RHA",
-		desc: "If held by an Ariados, this item allows it to Mega Evolve in battle.",
+		desc: "If held by an Stantler, this item allows it to Mega Evolve in battle.",
 	},
 	"xatunite": {
 		id: "xatunite",
@@ -7496,13 +7496,13 @@ let BattleItems = {
 		isNonstandard: "RHA",
 		desc: "If held by an Samurott, this item allows it to Mega Evolve in battle.",
 	},
-	"sawsbuckite": {
-		id: "sawsbuckite",
-		name: "Sawsbuckite",
+	"golurkite": {
+		id: "golurkite",
+		name: "Golurkite",
 		spritenum: 641,
-		megaStone: "Sawsbuck-Mega",
-		megaEvolves: "Sawsbuck",
-		itemUser: ["Sawsbuck"],
+		megaStone: "Golurk-Mega",
+		megaEvolves: "Golurk",
+		itemUser: ["Golurk"],
 		onTakeItem(item, source) {
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
 			return true;
@@ -7510,7 +7510,7 @@ let BattleItems = {
 		num: -85,
 		gen: 6,
 		isNonstandard: "RHA",
-		desc: "If held by an Sawsbuck, this item allows it to Mega Evolve in battle.",
+		desc: "If held by an Golurk, this item allows it to Mega Evolve in battle.",
 	},
 	"eelektrossite": {
 		id: "eelektrossite",
