@@ -3993,7 +3993,7 @@ let BattleAbilities = {
 		num: 200,
 	},
 	"warriorsspirit": {
-		shortDesc: "This Pokemon's attacking stat is multiplied by 1.5 while using a Steel-type attack.",
+		shortDesc: "This Pokemon's attacking stat is multiplied by 1.5 while using a Fighting-type attack.",
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
 			if (move.type === 'Steel') {
@@ -4003,7 +4003,7 @@ let BattleAbilities = {
 		},
 		onModifySpAPriority: 5,
 		onModifySpA(atk, attacker, defender, move) {
-			if (move.type === 'Steel') {
+			if (move.type === 'Fighting') {
 				this.debug('Warriors Spirit boost');
 				return this.chainModify(1.5);
 			}
